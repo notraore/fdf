@@ -3,16 +3,17 @@
 
 int main(void)
 {
-	int x = 300, y = 300;
-	void *mlx;
-	void *win;
+	t_tool	tool;
 
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, 600, 600, "600 x 600");
+	tool.mlx = mlx_init();
+	tool.win = mlx_new_window(tool.mlx, 600, 600, "600 x 600");
+	tool.img = (int *)mlx_new_image(tool.mlx, 600, 600);
 
-	mlx_pixel_put(mlx, win, x, y, 0xFFFFFF);
+	tool.img_data[(0+4*64) + (0+4*55)] = 0xFF;
 
-	mlx_loop(mlx);
-	mlx_mouse_hook(win, mouse_input, 0);
-	return 0;
+	mlx_put_image_to_window(tool.mlx, tool.win, tool.img, 0, 0);
+	mlx_mouse_hook(tool.win, (*mouse_input), 0);
+	mlx_key_hook(tool.win, (*keyboard_input), 0);
+	mlx_loop(tool.mlx);
+	return (0);
 }

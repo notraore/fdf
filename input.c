@@ -1,7 +1,7 @@
 #include "./minilibx/mlx.h"
 #include "fdf.h"
 
-int		keyboard_input(int keycode, void *param)
+int		keyboard_input(int keycode)
 {
 	if (keycode == 53)
 		exit(0);
@@ -11,7 +11,7 @@ int		keyboard_input(int keycode, void *param)
 	return (0);
 }
 
-int		mouse_input(int keycode, int x, int y, void *param)
+int		mouse_input(int keycode)
 {
 	ft_putstr("Jai bien la key numero "),
 	ft_putnbr(keycode);

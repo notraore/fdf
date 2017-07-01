@@ -14,7 +14,7 @@
 NAME =	fdf
 CC=		gcc
 SRC=    main.c input.c
-OBJ=	main.o main.o
+OBJ=	main.o input.o
 FLAGS=	-Wall -Wextra -Werror
 MLX=	-L ./minilibx -l mlx -framework OpenGL -framework AppKit
 LIB =	./libft/libft.a
@@ -25,7 +25,7 @@ $(NAME) : $(OBJ)
 	@ echo "\033[92m\t\t\t---> ✓ Libft.a created. ✓ <---\033[0m"
 	@ make -C ./libft
 	@ make -C ./minilibx
-	@ echo "\033[92m\t---> ✓ Fillit program has been successfully created. ✓ <---\033[0m"
+	@ echo "\033[92m\t---> ✓ FDF program has been successfully created. ✓ <---\033[0m"
 	@ $(CC) $(FLAGS) $(OBJ) $(MLX) $(LIB) -o $(NAME)
 
 $(OBJ) : $(SRC)
