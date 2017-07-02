@@ -7,6 +7,10 @@ typedef struct		s_tool
 {
 	int		x;
 	int		y;
+	int		sl;
+	int		color;
+	int		bpp;
+	int		end;
 	int		*img_data;
 	void	*mlx;
 	void	*win;
