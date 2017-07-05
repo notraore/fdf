@@ -13,8 +13,8 @@
 
 NAME =	fdf
 CC=		gcc
-SRC=    main.c input.c
-OBJ=	main.o input.o
+SRC=    main.c input.c ft_all_errors.c
+OBJ=	main.o input.o ft_all_errors.o
 FLAGS=	-Wall -Wextra -Werror
 MLX=	-L ./minilibx -l mlx -framework OpenGL -framework AppKit
 LIB =	./libft/libft.a

@@ -53,4 +53,11 @@ typedef	struct		s_parce
 int		keyboard_input(int keycode);
 int		mouse_input(int keycode);
 
+/*
+** ft_all_errors
+*/
+void	ft_check_args(int error);
+void	ft_errors(int error);
+
+
 #endif
