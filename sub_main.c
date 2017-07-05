@@ -30,11 +30,10 @@ int main(int argc, char **argv)
 
 	if (!(box.fd = open(argv[1], O_RDONLY)))
 		return (0);
-	// int i = 0;
 	while ((box.value = get_next_line(box.fd, &box.line) != 0))
 	{
-		count += ft_strlen(box.line);
-		printf("count = %d\n", count);
+		count = ft_strlen(box.line);
+		
 	}
 	close(box.fd);
 	printf("salut 0\n");
