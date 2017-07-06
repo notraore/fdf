@@ -4,8 +4,8 @@
 #include "./libft/libft.h"
 # include <unistd.h>
 # include <fcntl.h>
-# define WIDTH 600
-# define HEIGHT 600
+# define WIDTH 1920
+# define HEIGHT 1080
 
 /*
 **Structure des varialbes de la minilibX;
@@ -23,6 +23,8 @@ typedef struct		s_tool
 	void			*win;
 	void			*img;
 }					t_tool;
+
+
 
 /*
 ** Liste chainee contenant dans chaque maillons les lignes lues;
