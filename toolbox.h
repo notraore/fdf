@@ -28,9 +28,10 @@
 
 typedef struct		s_coor
 {
-	int				x;
-	int				y;
-	int				z;
+	double			x;
+	double			y;
+	double			z;
+	int				color;
 }					t_coor;
 
 typedef struct		s_img
@@ -38,7 +39,6 @@ typedef struct		s_img
 	int				sl;
 	int				bpp;
 	int				end;
-	int				color;
 
 	void			*img_ptr;
 	int				*img_data;
