@@ -24,7 +24,14 @@
 
 # define WIDTH 800
 # define HEIGHT 800
-# define LEN 10
+# define LEN 7
+
+typedef struct		s_coor
+{
+	int				x;
+	int				y;
+	int				z;
+}					t_coor;
 
 typedef struct		s_img
 {
@@ -35,6 +42,7 @@ typedef struct		s_img
 
 	void			*img_ptr;
 	int				*img_data;
+	t_coor			coor;
 }					t_img;
 
 typedef struct		s_mlx
@@ -44,12 +52,6 @@ typedef struct		s_mlx
 	t_img			img;
 }					t_mlx;
 
-typedef struct		s_split
-{
-	char			**stock;
-	struct s_split	*next;
-	struct s_split	*prev;
-}					t_split;
 
 /*
 **PRESSED_KEY
@@ -57,6 +59,11 @@ typedef struct		s_split
 
 int					pressed_key(int keycode, t_mlx *tool);
 int					mouse_key(int keycode);
-int					get_next_line(int fd, char **line);
+// int					get_next_line(int fd, char **line);
+
+/*
+**error
+*/
+void				ft_print_err(int argc);
 
 #endif

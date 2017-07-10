@@ -14,10 +14,13 @@
 
 int		pressed_key(int keycode, t_mlx *tool)
 {
+	(void)tool;
 	if (keycode == 53)
 		exit(0);
 	if (keycode == 126)
+	{
 		printf("GROSSE MERDEW\n");
+	}
 	ft_putstr("Jai bien la key numero ");
 	ft_putnbr(keycode);
 	ft_putchar('\n');
