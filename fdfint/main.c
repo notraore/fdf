@@ -10,61 +10,59 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "toolbox.h"
+// ptr->img.img_data[(pts.x - pts.y) + (pts.y + pts.x - stock[j][i] * 4) / 2 * WIDTH] = GREEN;
 
-long		ft_point_save(int flag, long x, long y, int high)
-{
-	if (flag == 1)
-		return (x - y);
-	if (flag == 2)
-		return ((y + x - high * 5) / 2 * WIDTH);
-	return (0);
-}
+#include "toolbox.h"
 
 void		ft_fill_tab(int **stock, t_mlx *ptr, t_pts pts, int *taille)
 {
 	int i;
 	int j;
+	int next_x;
+	int next_y;
+	int prev_x;
+	int prev_y;
 
 	i = 0;
 	j = 0;
-	while (stock[j])
+	prev_y = 0;
+	prev_x = 0;
+	while (stock[j] && stock[j] + 1 != NULL)
 	{
-		printf("j = %d\n", j);
 		pts.x = 502;
 		i = 0;
 		while (i < taille[j])
 		{
-			printf("i = %d\n", i);
-			if (stock[j][i] == 0)
-			{
-				ptr->img.img_data[(pts.x - pts.y) + (pts.y + pts.x) / 2 * WIDTH] = GREEN;
-				ft_line(pts.x, pts.y, pts.x - LEN, pts.y, ptr);
-				ft_line(pts.x, pts.y, pts.x, pts.y - LEN, ptr);
-				pts.x += LEN;
-			}
+			next_x = (pts.x + LEN) - (stock[j][i + 1] * 2);
+			next_y = pts.y - (stock[j][i + 1] * 2);
+			if (i != taille[j] - 1)
+				next_y = pts.y - (stock[j][i + 1] * 4) / 2;
+			if (stock[j][i] == 0 && !(i != taille[j] - 1 && stock[j][i + 1] != 0))
+				ptr->color = WHITE;
 			else
+				ptr->color = RED;
+			if (i != taille[j] - 1)
+				ft_line(pts.x - (stock[j][i] * 2) , pts.y - (stock[j][i] * 2), next_x, next_y , ptr);
+			if  (j > 1 && stock[j - 1][i] != 0)
 			{
-				ptr->img.img_data[(pts.x - pts.y) + (pts.y + pts.x - stock[j][i] * 4) / 2 * WIDTH] = RED;
-				ft_line2(pts.x - stock[j][i] * 4, pts.y - stock[j][i] * 4, pts.x - LEN, pts.y, ptr);
-				ft_line2(pts.x  - stock[j][i] * 4, pts.y - stock[j][i] * 4, pts.x, pts.y - LEN, ptr);
-				pts.x += LEN;
+				ptr->y =  (stock[j - 1][i] * 4);
+				if (stock[j][i] == 0)
+				{
+					ptr->color = RED;
+					ptr->y =  (stock[j - 1][i] * 4);
+					ft_line(pts.x , pts.y , pts.x - 100, pts.y - LEN, ptr);
+				}
+				//if (stock[j][i] != 0)
+					//ft_line2(pts.x , pts.y, pts.x, pts.y - LEN, ptr);
 			}
+			//else if (j > 0 )
+				//ft_line(pts.x - (stock[j][i] * 2) , pts.y - (stock[j][i] * 2), pts.x, pts.y- LEN, ptr);
+			pts.x += LEN;
 			i++;
 		}
 		pts.y += LEN;
 		j++;
 	}
-}
-
-// void		ft_array_to_int_tab(char *tmp, int **stock)
-{
-		while(tmp[i])
-			i++;
-		stock[j] = ft_memalloc(sizeof(int) * i + 1);
-		i = -1;
-		while(tmp[++i])
-			stock[j][i] = ft_atoi(tmp[i]);
 }
 
 void		ft_parce_file(int fd, char *argv, t_mlx *ptr, t_pts pts)
@@ -79,8 +77,6 @@ void		ft_parce_file(int fd, char *argv, t_mlx *ptr, t_pts pts)
 	
 	j = 0;
 	i = 0;
-	pts.x = 502;
-	pts.y = 25;
 	(!(fd = open(argv, O_RDONLY)) ? exit(-1) : 0);
 	while ((value = get_next_line(fd, &line)) == 1)
 		i++;
@@ -102,6 +98,7 @@ void		ft_parce_file(int fd, char *argv, t_mlx *ptr, t_pts pts)
 		free(tmp);
 		j++;
 	}
+	stock[j] = NULL;
 	ft_fill_tab(stock, ptr, pts, taille);
 	free(stock);
 }

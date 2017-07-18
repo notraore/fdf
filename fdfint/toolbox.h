@@ -23,7 +23,7 @@
 
 # define WIDTH 1280
 # define HEIGHT 720
-# define LEN 15
+# define LEN 25
 # define WHITE 0xFFFFFF
 # define RED 0xFF0000
 # define GREEN 0x00FF00
@@ -61,6 +61,7 @@ typedef struct		s_mlx
 {
 	int				x;
 	int				y;
+	int				color;
 	void			*mlx_ptr;
 	void			*win_ptr;
 	t_img			img;
