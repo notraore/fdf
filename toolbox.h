@@ -23,10 +23,10 @@
 
 # define WIDTH 2610
 # define HEIGHT 1440
-# define LEN 20
+//# define LEN 5
 # define WHITE 0xFFFFFF
 # define RED 0xFF0000
-# define GREEN 0x00FF00
+# define GREEN 0x21610B
 # define BLUE 0x0000FF
 
 typedef struct		s_pce
@@ -40,6 +40,7 @@ typedef struct		s_pce
 	int			j; 
 }					t_pce;
 
+
 typedef struct		s_pts
 {
 	int 			x;
@@ -49,6 +50,12 @@ typedef struct		s_pts
 	int				next_x;
 	int				next_y;
 }					t_pts;
+
+typedef struct s_key
+{
+	int			key;
+	t_pts		pts;
+}				t_key;
 
 typedef struct		s_line
 {
@@ -72,8 +79,12 @@ typedef struct		s_img
 
 typedef struct		s_mlx
 {
+	int				*lenght;
+	int				**tab;
+	t_pts			save_pts;
 	int				x;
 	int				y;
+	int				len;
 	int				color;
 	void			*mlx_ptr;
 	void			*win_ptr;
@@ -85,7 +96,6 @@ typedef struct		s_mlx
 /*
 **PRESSED_KEY
 */
-
 int					pressed_key(int keycode, t_mlx *tool);
 int					mouse_key(int keycode/*, t_mlx *ptr*/);
 /*
@@ -97,5 +107,7 @@ void				ft_print_err(int argc);
 */
 void ft_line(long x0, long y0, long x1, long y1, t_mlx *ptr);
 void ft_line2(long x0, long y0, long x1, long y1, t_mlx *ptr);
+void		ft_create_win(char *argv, t_mlx *ptr);
+void		ft_fill_tab(int **sck, t_mlx *ptr, t_pts pts, int *taille);
 
 #endif
