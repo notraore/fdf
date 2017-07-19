@@ -12,17 +12,14 @@
 
 #include "toolbox.h"
 
-int		pressed_key(int keycode, t_mlx *tool)
+int		pressed_key(int keycode)//, t_mlx *tool)
 {
 
 	if (keycode == 53)
 		exit(EXIT_SUCCESS);
 	if (keycode  == 126)
 	{
-		tool->len += 10;
-		ft_fill_tab(tool->tab, tool, tool->save_pts, tool->lenght);
-		mlx_put_image_to_window(tool->mlx_ptr, tool->win_ptr, tool->img.img_ptr, 0, 0);
-		ft_putstr("HEUUUUU");
+		printf("%d\n", __LINE__);
 	}
 	ft_putstr("Jai bien la key numero  ");
 	ft_putnbr(keycode);
