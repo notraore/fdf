@@ -14,20 +14,20 @@
 
 int		pressed_key(int keycode, t_mlx *tool)
 {
-	(void)tool;
+	// (void)tool;
 	if (keycode == 53)
 		exit(EXIT_SUCCESS);
 	if (keycode == 126)
-		printf("GROSSE MERDE\n");
-	ft_putstr("Jai bien la key numero ");
+		tool->y += 5;
+	ft_putstr("Jai bien la key numero  ");
 	ft_putnbr(keycode);
 	ft_putchar('\n');
 	return (0);
 }
 
-int		mouse_key(int keycode)
+int		mouse_key(int keycode)//, t_mlx *ptr)
 {
-	ft_putstr("Jai bien la key numero ");
+	ft_putstr("Jai bien la key numero mouse");
 	ft_putnbr(keycode);
 	ft_putchar('\n');
 	return (0);

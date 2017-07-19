@@ -23,7 +23,7 @@
 
 # define WIDTH 2610
 # define HEIGHT 1440
-# define LEN 3
+# define LEN 20
 # define WHITE 0xFFFFFF
 # define RED 0xFF0000
 # define GREEN 0x00FF00
@@ -77,6 +77,8 @@ typedef struct		s_mlx
 	int				color;
 	void			*mlx_ptr;
 	void			*win_ptr;
+	int				fd;
+	char			*argv;
 	t_img			img;
 }					t_mlx;
 
@@ -85,7 +87,7 @@ typedef struct		s_mlx
 */
 
 int					pressed_key(int keycode, t_mlx *tool);
-int					mouse_key(int keycode);
+int					mouse_key(int keycode/*, t_mlx *ptr*/);
 /*
 **error
 */

@@ -44,7 +44,6 @@ void ft_line(long x0, long y0, long x1, long y1, t_mlx *ptr)
 	}
 }
 
-
 void ft_line2(long x0, long y0, long x1, long y1, t_mlx *ptr)
 {
 	t_line line;
