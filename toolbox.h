@@ -23,11 +23,12 @@
 
 # define WIDTH 2610
 # define HEIGHT 1440
-# define LEN 4
+# define LEN 3
 # define WHITE 0xFFFFFF
 # define RED 0xFF0000
 # define GREEN 0x21610B
 # define BLUE 0x0000FF
+# define YELLOW 0xFFFF00
 
 typedef struct		s_pce
 {
@@ -91,7 +92,7 @@ typedef struct		s_mlx
 /*
 **PRESSED_KEY
 */
-int					pressed_key(int keycode);//, t_mlx *tool);
+int					pressed_key(int keycode, t_mlx *tool);
 int					mouse_key(int keycode/*, t_mlx *ptr*/);
 /*
 **error

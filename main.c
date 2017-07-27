@@ -17,14 +17,14 @@ void		ft_fill_tab(int **sck, t_mlx *ptr, t_pts pts, int *taille)
 	ft_bzero(&pts, (sizeof(t_pts)));
 	while (sck[pts.j] && sck[pts.j] + 1 != NULL)
 	{
-		pts.x = 100;
+		pts.x = 850;
 		pts.i = 0;
 		while (pts.i < taille[pts.j])
 		{
 			pts.next_x = (pts.x + LEN) - (sck[pts.j][pts.i + 1] * 2);
 			pts.next_y = pts.y - (sck[pts.j][pts.i + 1] * 2);
 			ptr->color = (sck[pts.j][pts.i] == 0 && (pts.next_x ==
-			pts.x + LEN)) ? BLUE : GREEN;
+			pts.x + LEN)) ? RED : 0xD8D8D8;
 			if (pts.i != taille[pts.j] - 1)
 				ft_line(pts.x - (sck[pts.j][pts.i] * 2), pts.y -
 				(sck[pts.j][pts.i] * 2), pts.next_x, pts.next_y, ptr);
@@ -32,7 +32,7 @@ void		ft_fill_tab(int **sck, t_mlx *ptr, t_pts pts, int *taille)
 			{
 				ptr->y = (sck[pts.j][pts.i] == 0) ? (sck[pts.j - 1][pts.i] * 4) / 2
 				: (sck[pts.j - 1][pts.i] * 4);
-				if (sck[pts.j][pts.i] == 0 && (ptr->color = GREEN))
+				if (sck[pts.j][pts.i] == 0 && (ptr->color = 0xD8D8D8))
 					ft_line(pts.x + (sck[pts.j][pts.i] * 2), pts.y +
 					(sck[pts.j][pts.i] * 2), pts.x - ptr->y, pts.y - LEN
 					- (sck[pts.j - 1][pts.i] * 2), ptr);
@@ -43,7 +43,7 @@ void		ft_fill_tab(int **sck, t_mlx *ptr, t_pts pts, int *taille)
 						(sck[pts.j][pts.i])) * 2, ptr);
 			}
 			else if (pts.j > 0 && ((sck[pts.j][pts.i] == 0 &&
-			(ptr->color = BLUE)) || sck[pts.j][pts.i] != 0))
+			(ptr->color = RED)) || sck[pts.j][pts.i] != 0))
 				ft_line(pts.x - (sck[pts.j][pts.i] * 2), pts.y
 						- (sck[pts.j][pts.i] * 2), pts.x, pts.y - LEN
 						, ptr);
