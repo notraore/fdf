@@ -21,9 +21,9 @@
 # include "./libft/libft.h"
 # include "./minilibx/mlx.h"
 
-# define WIDTH 600
-# define HEIGHT 400
-# define LEN 30
+# define WIDTH 1920
+# define HEIGHT 1080
+# define LEN 1
 # define WHITE 0xFFFFFF
 # define RED 0xFF0000
 # define GREEN 0x21610B
@@ -83,7 +83,9 @@ typedef struct		s_mlx
 	int				x;
 	int				y;
 	int				m;
-	int				color;
+	float			w;
+	int				z;
+	int				clr;
 	char			*argv;
 	void			*mlx_ptr;
 	void			*win_ptr;
@@ -99,7 +101,7 @@ void		ft_parce_file(t_mlx *ptr, t_pts pts);
 **PRESSED_KEY
 */
 int					pressed_key(int keycode, t_mlx *tool);
-int					mouse_key(int keycode/*, t_mlx *ptr*/);
+int					mouse_key(int keycode, t_mlx *tool);
 /*
 **error
 */
