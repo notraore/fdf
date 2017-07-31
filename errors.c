@@ -15,8 +15,20 @@
 void	ft_print_err(int argc)
 {
 	if (argc > 2)
-		ft_putendl("too many arguments.\nusage: ./fdf [map]");
+		ft_putendl("too many arguments.\nusage: ./fdf [map] or ./fdf \"help\"");
 	if (argc < 2)
-		ft_putendl("none map found.\nusage: ./fdf [map]");
+		ft_putendl("none map found.\nusage: ./fdf [map] or ./fdf \"help\"");
 	exit(EXIT_FAILURE);
+}
+
+void	ft_help(void)
+{
+	ft_putstr("\t./fdf [map] -> ");
+	ft_putendl("Map exemple can be found on Map directory\n\
+	\t\t\t**INPUT**\n\
+	-Press 'a' and 'e' to add and substract relief.\n\
+	-Press '+' and '-' to zoom in and out.\n\
+	-Press directional arrows to move the image.\n\
+	-Press 'esc' to exit the program.");
+	exit(EXIT_SUCCESS);
 }

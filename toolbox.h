@@ -13,11 +13,7 @@
 #ifndef __TOOLBOX_H
 # define __TOOLBOX_H
 
-# include <unistd.h>
-# include <fcntl.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include <math.h>
+
 # include "./libft/libft.h"
 # include "./minilibx/mlx.h"
 
@@ -85,7 +81,7 @@ typedef struct		s_mlx
 	int				m;
 	int				w;
 	int				z;
-	int				mult;
+	float			mult;
 	int				clr;
 	char			*argv;
 	void			*mlx_ptr;
@@ -107,6 +103,7 @@ int					mouse_key(int keycode, t_mlx *tool);
 **error
 */
 void				ft_print_err(int argc);
+void				ft_help();
 /*
 **bresenham
 */

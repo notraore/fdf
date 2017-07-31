@@ -12,28 +12,24 @@
 
 #include "toolbox.h"
 
-/************************************** RELIER DEUX POINTS *********************************************/
-
-void ft_line(long x0, long y0, long x1, long y1, t_mlx *ptr)
+void		ft_line(long x0, long y0, long x1, long y1, t_mlx *ptr)
 {
 	t_line line;
 
-	line.dx = labs(x1-x0);
+	line.dx = labs(x1 - x0);
 	line.sx = x0 < x1 ? 1 : -1;
 	line.dy = labs(y1 - y0);
 	line.sy = y0 < y1 ? 1 : -1;
-	line.err = (line.dx>line.dy ? line.dx : -line.dy) / 2;
-	while(1)
+	line.err = (line.dx > line.dy ? line.dx : -line.dy) / 2;
+	while (1)
 	{
 		if (!((x0 - y0) + (y0 + x0) / 2 * WIDTH > WIDTH * HEIGHT) &&
 		!((x0 - y0) + (y0 + x0) / 2 * WIDTH < 0))
 			ptr->img.img_data[(x0 - y0) + (y0 + x0) / 2 * WIDTH] = ptr->clr;
-		// else
-		// 	break;
 		if (x0 == x1 && y0 == y1)
-			break;
+			break ;
 		line.e2 = line.err;
-		if (line.e2 >- line.dx)
+		if (line.e2 > -line.dx)
 		{
 			line.err -= line.dy;
 			x0 += line.sx;
@@ -46,26 +42,24 @@ void ft_line(long x0, long y0, long x1, long y1, t_mlx *ptr)
 	}
 }
 
-void ft_line2(long x0, long y0, long x1, long y1, t_mlx *ptr)
+void		ft_line2(long x0, long y0, long x1, long y1, t_mlx *ptr)
 {
 	t_line line;
 
-	line.dx = labs(x1-x0);
+	line.dx = labs(x1 - x0);
 	line.sx = x0 < x1 ? 1 : -1;
 	line.dy = labs(y1 - y0);
 	line.sy = y0 < y1 ? 1 : -1;
-	line.err = (line.dx>line.dy ? line.dx : -line.dy) / 2;
-	while(1)
+	line.err = (line.dx > line.dy ? line.dx : -line.dy) / 2;
+	while (1)
 	{
-		if (!((x0 - y0) + (y0 + x0 - ptr->y)/ 2 * WIDTH > WIDTH * HEIGHT) &&
-		!((x0 - y0) + (y0 + x0 - ptr->y)/ 2 * WIDTH < 0))
+		if (!((x0 - y0) + (y0 + x0 - ptr->y) > WIDTH * HEIGHT) && !((x0 - y0)
+		+ (y0 + x0 - ptr->y) * WIDTH < 0))
 			ptr->img.img_data[(x0 - y0) + (y0 + x0 - ptr->y) / 2 * WIDTH] = ptr->clr;
-		// else
-		// 	break;
 		if (x0 == x1 && y0 == y1)
-			break;
+			break ;
 		line.e2 = line.err;
-		if (line.e2 >- line.dx)
+		if (line.e2 > -line.dx)
 		{
 			line.err -= line.dy;
 			x0 += line.sx;
