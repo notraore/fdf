@@ -32,13 +32,13 @@
 
 typedef struct		s_pce
 {
-	int			value;
-	char		*line;
-	int			**stock;
-	int 		*taille;
-	char		**tmp;
-	int 		i;
-	int			j; 
+	int				value;
+	char			*line;
+	int				**stock;
+	int 			*taille;
+	char			**tmp;
+	int 			i;
+	int				j; 
 }					t_pce;
 
 
@@ -52,11 +52,11 @@ typedef struct		s_pts
 	int				next_y;
 }					t_pts;
 
-typedef struct s_key
+typedef struct		s_key
 {
-	int			key;
-	t_pts		pts;
-}				t_key;
+	int				key;
+	t_pts			pts;
+}					t_key;
 
 typedef struct		s_line
 {
@@ -83,8 +83,9 @@ typedef struct		s_mlx
 	int				x;
 	int				y;
 	int				m;
-	float			w;
+	int				w;
 	int				z;
+	int				mult;
 	int				clr;
 	char			*argv;
 	void			*mlx_ptr;
@@ -95,7 +96,7 @@ typedef struct		s_mlx
 /*
 ** main.c
 */
-void		ft_parce_file(t_mlx *ptr, t_pts pts);
+void				ft_parce_file(t_mlx *ptr, t_pts pts);
 
 /*
 **PRESSED_KEY
@@ -109,8 +110,8 @@ void				ft_print_err(int argc);
 /*
 **bresenham
 */
-void ft_line(long x0, long y0, long x1, long y1, t_mlx *ptr);
-void ft_line2(long x0, long y0, long x1, long y1, t_mlx *ptr);
-void		ft_create_win(char *argv, t_mlx *ptr);
+void				ft_line(long x0, long y0, long x1, long y1, t_mlx *ptr);
+void				ft_line2(long x0, long y0, long x1, long y1, t_mlx *ptr);
+void				ft_create_win(char *argv, t_mlx *ptr);
 
 #endif

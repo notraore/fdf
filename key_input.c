@@ -40,6 +40,10 @@ int		pressed_key(int keycode, t_mlx *tool)
 		tool->z += 5;
 	if (keycode == 126)
 		tool->z -= 5;
+	if (keycode == 12)
+		tool->mult += 1;
+	if (keycode == 14)
+		tool->mult -= 1;
 	clear_and_reput(tool, pts);
 	ft_putstr("Jai bien la key numero ");
 	ft_putnbr(keycode);

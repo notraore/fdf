@@ -21,22 +21,23 @@ void	ft_norme(int **sck, t_pts pts, t_mlx *ptr)
 	if (pts.j >= 1 && sck[pts.j - 1][pts.i] != 0)
 	{
 			ptr->y = (sck[pts.j][pts.i] == 0) ? ((sck[pts.j - 1][pts.i])
-			* 4) / 2: ((sck[pts.j - 1][pts.i]) * 4);
+			* ptr->mult * 2) / 2: ((sck[pts.j - 1][pts.i]) * ptr->mult * 2);
 		if (sck[pts.j][pts.i] == 0 && (ptr->clr = BLUE))
-			ft_line((pts.x + ptr->m) + ((sck[pts.j][pts.i]) * 2), 
-			(pts.y + ptr->z) + ((sck[pts.j][pts.i]) * 2),(pts.x + ptr->m)
+			ft_line((pts.x + ptr->m) + ((sck[pts.j][pts.i]) * ptr->mult), 
+			(pts.y + ptr->z) + ((sck[pts.j][pts.i]) * ptr->mult), (pts.x + ptr->m)
 			- ptr->y, (pts.y + ptr->z) - (LEN + ptr->w)
-			- (sck[pts.j - 1][pts.i]) * 2, ptr);
+			- (sck[pts.j - 1][pts.i]) * ptr->mult, ptr);
 		if (sck[pts.j][pts.i] != 0)
 			ft_line2((pts.x + ptr->m), (pts.y + ptr->z) - (LEN + ptr->w),
-			(pts.x + ptr->m) + (sck[pts.j - 1][pts.i] - (sck[pts.j][pts.i])) * 2,
+			(pts.x + ptr->m) + (sck[pts.j - 1][pts.i] -
+			(sck[pts.j][pts.i])) * ptr->mult,
 			(pts.y + ptr->z) + (sck[pts.j - 1][pts.i] -
-			(sck[pts.j][pts.i])) * 2, ptr);
+			(sck[pts.j][pts.i])) * ptr->mult, ptr);
 	}
 	else if (pts.j > 0 && ((sck[pts.j][pts.i] == 0 &&
 	(ptr->clr = RED)) || sck[pts.j][pts.i] != 0))
-		ft_line((ptr->m + pts.x) - ((sck[pts.j][pts.i]) * 2), (pts.y + ptr->z)
-		- ((sck[pts.j][pts.i]) * 2), (pts.x + ptr->m), (pts.y + ptr->z) -
+		ft_line((ptr->m + pts.x) - ((sck[pts.j][pts.i]) * ptr->mult), (pts.y + ptr->z)
+		- ((sck[pts.j][pts.i]) * ptr->mult), (pts.x + ptr->m), (pts.y + ptr->z) -
 		(LEN + ptr->w) , ptr);
 }
 
@@ -55,17 +56,17 @@ void		ft_fill_tab(int **sck, t_mlx *ptr, t_pts pts, int *taille)
 	ft_bzero(&pts, (sizeof(t_pts)));
 	while (sck[pts.j] && sck[pts.j] + 1 != NULL)
 	{
-		pts.x = 350;
+		pts.x = 400;
 		pts.i = 0;
 		while (pts.i < taille[pts.j])
 		{
-			pts.next_x = (pts.x + (LEN + ptr->w)) - ((sck[pts.j][pts.i + 1]) * 2);
-			pts.next_y = pts.y - ((sck[pts.j][pts.i + 1]) * 2);
+			pts.next_x = (pts.x + (LEN + ptr->w)) - ((sck[pts.j][pts.i + 1]) * ptr->mult);
+			pts.next_y = pts.y - ((sck[pts.j][pts.i + 1]) * ptr->mult);
 			ptr->clr = (sck[pts.j][pts.i] == 0 && (pts.next_x ==
 			pts.x + (LEN + ptr->w))) ? RED : BLUE;
 			if (pts.i != taille[pts.j] - 1)
-				ft_line((pts.x + ptr->m) - ((sck[pts.j][pts.i]) * 2), 
-				(pts.y + ptr->z) - ((sck[pts.j][pts.i]) * 2), pts.next_x + ptr->m,
+				ft_line((pts.x + ptr->m) - ((sck[pts.j][pts.i]) * ptr->mult), 
+				(pts.y + ptr->z) - ((sck[pts.j][pts.i]) * ptr->mult), pts.next_x + ptr->m,
 				(ptr->z + pts.next_y), ptr);
 			ft_norme(sck, pts, ptr);
 			pts.x += (LEN + ptr->w);
