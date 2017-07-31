@@ -13,13 +13,12 @@
 #ifndef __TOOLBOX_H
 # define __TOOLBOX_H
 
-
 # include "./libft/libft.h"
 # include "./minilibx/mlx.h"
 
 # define WIDTH 1920
 # define HEIGHT 1080
-# define LEN 1
+# define LEN 5
 # define WHITE 0xFFFFFF
 # define RED 0xFF0000
 # define GREEN 0x21610B
@@ -31,17 +30,16 @@ typedef struct		s_pce
 	int				value;
 	char			*line;
 	int				**stock;
-	int 			*taille;
+	int				*taille;
 	char			**tmp;
-	int 			i;
-	int				j; 
+	int				i;
+	int				j;
 }					t_pce;
-
 
 typedef struct		s_pts
 {
-	int 			x;
-	int 			y;
+	int				x;
+	int				y;
 	int				i;
 	int				j;
 	int				next_x;
@@ -59,7 +57,7 @@ typedef struct		s_line
 	int				dx;
 	int				sx;
 	int				dy;
-	int				sy; 
+	int				sy;
 	int				err;
 	int				e2;
 }					t_line;
@@ -78,10 +76,10 @@ typedef struct		s_mlx
 {
 	int				x;
 	int				y;
-	int				m;
+	int				up;
 	int				w;
 	int				z;
-	float			mult;
+	double			mult;
 	int				clr;
 	char			*argv;
 	void			*mlx_ptr;

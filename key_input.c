@@ -29,22 +29,22 @@ int		pressed_key(int keycode, t_mlx *tool)
 	if (keycode == 53)
 		exit(EXIT_SUCCESS);
 	bzero(&tool->img, sizeof(t_img));
-	if (keycode == 124)
-		tool->m += 5;
-	if (keycode == 123)
-		tool->m -= 5;
+	if (keycode == 2)
+		tool->up += 5;
+	if (keycode == 0)
+		tool->up -= 5;
 	if (keycode == 69)
 		tool->w += 1;
 	if (keycode == 78)
 		tool->w -= 1;
-	if (keycode == 125)
-		tool->z += 3;
-	if (keycode == 126)
-		tool->z -= 3;
+	if (keycode == 1)
+		tool->z += 5;
+	if (keycode == 13)
+		tool->z -= 5;
 	if (keycode == 12)
-		tool->mult += 0.16;
+		tool->mult += 0.17;
 	if (keycode == 14)
-		tool->mult -= 0.16;
+		tool->mult -= 0.17;
 	clear_and_reput(tool, pts);
 	return (0);
 }

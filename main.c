@@ -23,21 +23,21 @@ void		ft_norme(int **sck, t_pts pts, t_mlx *ptr)
 		ptr->y = (sck[pts.j][pts.i] == 0) ? ((sck[pts.j - 1][pts.i])
 		* ptr->mult * 2) / 2 : ((sck[pts.j - 1][pts.i]) * ptr->mult * 2);
 		if (sck[pts.j][pts.i] == 0 && (ptr->clr = BLUE))
-			ft_line((pts.x + ptr->m) + ((sck[pts.j][pts.i]) * ptr->mult),
+			ft_line((pts.x + ptr->up) + ((sck[pts.j][pts.i]) * ptr->mult),
 			(pts.y + ptr->z) + ((sck[pts.j][pts.i]) * ptr->mult),
-			(pts.x + ptr->m) - ptr->y, (pts.y + ptr->z) - (LEN + ptr->w)
+			(pts.x + ptr->up) - ptr->y, (pts.y + ptr->z) - (LEN + ptr->w)
 			- (sck[pts.j - 1][pts.i]) * ptr->mult, ptr);
 		if (sck[pts.j][pts.i] != 0)
-			ft_line2((pts.x + ptr->m), (pts.y + ptr->z) - (LEN + ptr->w),
-			(pts.x + ptr->m) + (sck[pts.j - 1][pts.i] -
+			ft_line2((pts.x + ptr->up), (pts.y + ptr->z) - (LEN + ptr->w),
+			(pts.x + ptr->up) + (sck[pts.j - 1][pts.i] -
 			(sck[pts.j][pts.i])) * ptr->mult,
 			(pts.y + ptr->z) + (sck[pts.j - 1][pts.i] -
 			(sck[pts.j][pts.i])) * ptr->mult, ptr);
 	}
 	else if (pts.j > 0 && ((sck[pts.j][pts.i] == 0 &&
 	(ptr->clr = RED)) || sck[pts.j][pts.i] != 0))
-		ft_line((ptr->m + pts.x) - ((sck[pts.j][pts.i]) * ptr->mult),
-		(pts.y + ptr->z) - ((sck[pts.j][pts.i]) * ptr->mult), (pts.x + ptr->m),
+		ft_line((ptr->up + pts.x) - ((sck[pts.j][pts.i]) * ptr->mult),
+		(pts.y + ptr->z) - ((sck[pts.j][pts.i]) * ptr->mult), (pts.x + ptr->up),
 		(pts.y + ptr->z) - (LEN + ptr->w), ptr);
 }
 
@@ -66,9 +66,9 @@ void		ft_fill_tab(int **sck, t_mlx *ptr, t_pts pts, int *taille)
 			ptr->clr = (sck[pts.j][pts.i] == 0 && (pts.next_x ==
 			pts.x + (LEN + ptr->w))) ? RED : BLUE;
 			if (pts.i != taille[pts.j] - 1)
-				ft_line((pts.x + ptr->m) - ((sck[pts.j][pts.i]) * ptr->mult),
+				ft_line((pts.x + ptr->up) - ((sck[pts.j][pts.i]) * ptr->mult),
 				(pts.y + ptr->z) - ((sck[pts.j][pts.i]) * ptr->mult),
-				pts.next_x + ptr->m, (ptr->z + pts.next_y), ptr);
+				pts.next_x + ptr->up, (ptr->z + pts.next_y), ptr);
 			ft_norme(sck, pts, ptr);
 			pts.x += (LEN + ptr->w);
 			pts.i += 1;
