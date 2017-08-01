@@ -16,8 +16,8 @@
 # include "./libft/libft.h"
 # include "./minilibx/mlx.h"
 
-# define WIDTH 2160
-# define HEIGHT 1440
+# define W 2160
+# define H 1440
 # define LEN 5
 # define WHITE 0xFFFFFF
 # define RED 0xFF0000
@@ -29,8 +29,6 @@ typedef struct		s_pce
 {
 	int				value;
 	char			*line;
-	int				**stock;
-	int				*taille;
 	char			**tmp;
 	int				i;
 	int				j;
@@ -45,12 +43,6 @@ typedef struct		s_pts
 	int				next_x;
 	int				next_y;
 }					t_pts;
-
-typedef struct		s_key
-{
-	int				key;
-	t_pts			pts;
-}					t_key;
 
 typedef struct		s_line
 {
@@ -74,6 +66,8 @@ typedef struct		s_img
 
 typedef struct		s_mlx
 {
+	int				**stock;
+	int				*taille;
 	int				x;
 	int				y;
 	int				up;
@@ -91,6 +85,7 @@ typedef struct		s_mlx
 ** main.c
 */
 void				ft_parce_file(t_mlx *ptr, t_pts pts);
+void				ft_fill_tab(int **sck, t_mlx *ptr, t_pts pts, int *taille);
 
 /*
 **PRESSED_KEY

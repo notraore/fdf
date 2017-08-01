@@ -78,14 +78,27 @@ void		ft_fill_tab(int **sck, t_mlx *ptr, t_pts pts, int *taille)
 	}
 }
 
-int			open_close_fd(int fd, char *argv, t_pce pce)
+int			open_close_fd(int fd, char *argv, t_pce *pce)
 {
 	int i;
 
+	pce->line = NULL;
 	i = 0;
 	(!(fd = open(argv, O_RDONLY)) ? exit(-1) : 0);
-	while ((pce.value = get_next_line(fd, &pce.line)) == 1)
+	while ((pce->value = get_next_line(fd, &pce->line)) == 1)
+	{
+		if (pce->line)
+		{
+			free(pce->line);
+			pce->line = NULL;
+		}
 		i++;
+	}
+	if (pce->line)
+	{
+		free(pce->line);
+		pce->line = NULL;
+	}
 	close(fd);
 	return (i);
 }
@@ -95,27 +108,26 @@ void		ft_parce_file(t_mlx *ptr, t_pts pts)
 	t_pce	pce;
 
 	ft_bzero(&pce, (sizeof(t_pce)));
-	pce.i = open_close_fd(ptr->fd, ptr->argv, pce);
+	pce.i = open_close_fd(ptr->fd, ptr->argv, &pce);
 	(!(ptr->fd = open(ptr->argv, O_RDONLY)) ? exit(-1) : 0);
-	pce.stock = (int **)ft_memalloc(sizeof(int *) * pce.i + 1);
-	pce.taille = (int *)ft_memalloc(sizeof(int) * pce.i + 1);
+	ptr->stock = (int **)ft_memalloc(sizeof(int *) * pce.i + 1);
+	ptr->taille = (int *)ft_memalloc(sizeof(int) * pce.i + 1);
 	pce.i = 0;
 	while ((pce.value = get_next_line(ptr->fd, &pce.line)) == 1)
 	{
 		pce.tmp = ft_strsplit(pce.line, ' ');
 		while (pce.tmp[pce.i])
 			pce.i += 1;
-		pce.stock[pce.j] = ft_memalloc(sizeof(int) * pce.i + 1);
+		ptr->stock[pce.j] = ft_memalloc(sizeof(int) * pce.i + 1);
 		pce.i = 0;
 		while (pce.tmp[pce.i += 1])
-			pce.stock[pce.j][pce.i] = ft_atoi(pce.tmp[pce.i]);
-		pce.taille[pce.j] = pce.i;
+			ptr->stock[pce.j][pce.i] = ft_atoi(pce.tmp[pce.i]);
+		ptr->taille[pce.j] = pce.i;
 		free(pce.tmp);
 		pce.j += 1;
 	}
-	pce.stock[pce.j] = NULL;
-	ft_fill_tab(pce.stock, ptr, pts, pce.taille);
-	free(pce.stock);
+	ptr->stock[pce.j] = NULL;
+	ft_fill_tab(ptr->stock, ptr, pts, ptr->taille);
 }
 
 void		ft_create_win(char *av, t_mlx *ptr)
@@ -124,9 +136,8 @@ void		ft_create_win(char *av, t_mlx *ptr)
 
 	ft_bzero(&pts, sizeof(t_pts));
 	ptr->mlx = mlx_init();
-	ptr->win = mlx_new_window(ptr->mlx, WIDTH,
-	HEIGHT, ft_strjoin("FDF -", av));
-	ptr->img.img_ptr = mlx_new_image(ptr->mlx, WIDTH, HEIGHT);
+	ptr->win = mlx_new_window(ptr->mlx, W, H, av);
+	ptr->img.img_ptr = mlx_new_image(ptr->mlx, W, H);
 	ptr->img.img_data = (int *)mlx_get_data_addr(ptr->img.img_ptr,
 	&ptr->img.bpp, &ptr->img.sl, &ptr->img.end);
 	ptr->argv = av;

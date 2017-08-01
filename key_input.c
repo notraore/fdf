@@ -12,19 +12,14 @@
 
 #include "toolbox.h"
 
-char	*ret_str(char *str)
-{
-	return (str);
-}
-
 void	clear_and_reput(t_mlx *tl, t_pts pts)
 {
-	tl->img.img_ptr = mlx_new_image(tl->mlx, WIDTH, HEIGHT);
+	tl->img.img_ptr = mlx_new_image(tl->mlx, W, H);
 	tl->img.img_data = (int *)mlx_get_data_addr(tl->img.img_ptr,
 	&tl->img.bpp, &tl->img.sl, &tl->img.end);
-	ft_parce_file(tl, pts);
+	ft_fill_tab(tl->stock, tl, pts, tl->taille);
 	mlx_put_image_to_window(tl->mlx, tl->win, tl->img.img_ptr, 0, 0);
-	mlx_string_put(tl->mlx, tl->win, 15, 15, WHITE, ret_str("W,A,S,D to move"));
+	mlx_string_put(tl->mlx, tl->win, 15, 15, WHITE, "W,A,S,D to move");
 }
 
 int		pressed_key(int keycode, t_mlx *tool)
