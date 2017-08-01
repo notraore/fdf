@@ -25,10 +25,10 @@ void		ft_norme(int **sck, t_pts pts, t_mlx *ptr)
 		if (sck[pts.j][pts.i] == 0 && (ptr->clr = BLUE))
 			ft_line((pts.x + ptr->up) + ((sck[pts.j][pts.i]) * ptr->mult),
 			(pts.y + ptr->z) + ((sck[pts.j][pts.i]) * ptr->mult),
-			(pts.x + ptr->up) - ptr->y, (pts.y + ptr->z) - (LEN + ptr->w)
+			(pts.x + ptr->up) - ptr->y, (pts.y + ptr->z) - (LEN + ptr->zoom)
 			- (sck[pts.j - 1][pts.i]) * ptr->mult, ptr);
 		if (sck[pts.j][pts.i] != 0)
-			ft_line2((pts.x + ptr->up), (pts.y + ptr->z) - (LEN + ptr->w),
+			ft_line2((pts.x + ptr->up), (pts.y + ptr->z) - (LEN + ptr->zoom),
 			(pts.x + ptr->up) + (sck[pts.j - 1][pts.i] -
 			(sck[pts.j][pts.i])) * ptr->mult,
 			(pts.y + ptr->z) + (sck[pts.j - 1][pts.i] -
@@ -38,7 +38,7 @@ void		ft_norme(int **sck, t_pts pts, t_mlx *ptr)
 	(ptr->clr = RED)) || sck[pts.j][pts.i] != 0))
 		ft_line((ptr->up + pts.x) - ((sck[pts.j][pts.i]) * ptr->mult),
 		(pts.y + ptr->z) - ((sck[pts.j][pts.i]) * ptr->mult), (pts.x + ptr->up),
-		(pts.y + ptr->z) - (LEN + ptr->w), ptr);
+		(pts.y + ptr->z) - (LEN + ptr->zoom), ptr);
 }
 
 /*
@@ -60,20 +60,20 @@ void		ft_fill_tab(int **sck, t_mlx *ptr, t_pts pts, int *taille)
 		pts.i = 0;
 		while (pts.i < taille[pts.j])
 		{
-			pts.next_x = (pts.x + (LEN + ptr->w)) -
+			pts.next_x = (pts.x + (LEN + ptr->zoom)) -
 			((sck[pts.j][pts.i + 1]) * ptr->mult);
 			pts.next_y = pts.y - ((sck[pts.j][pts.i + 1]) * ptr->mult);
 			ptr->clr = (sck[pts.j][pts.i] == 0 && (pts.next_x ==
-			pts.x + (LEN + ptr->w))) ? RED : BLUE;
+			pts.x + (LEN + ptr->zoom))) ? RED : BLUE;
 			if (pts.i != taille[pts.j] - 1)
 				ft_line((pts.x + ptr->up) - ((sck[pts.j][pts.i]) * ptr->mult),
 				(pts.y + ptr->z) - ((sck[pts.j][pts.i]) * ptr->mult),
 				pts.next_x + ptr->up, (ptr->z + pts.next_y), ptr);
 			ft_norme(sck, pts, ptr);
-			pts.x += (LEN + ptr->w);
+			pts.x += (LEN + ptr->zoom);
 			pts.i += 1;
 		}
-		pts.y += (LEN + ptr->w);
+		pts.y += (LEN + ptr->zoom);
 		pts.j += 1;
 	}
 }
@@ -123,18 +123,19 @@ void		ft_create_win(char *av, t_mlx *ptr)
 	t_pts pts;
 
 	ft_bzero(&pts, sizeof(t_pts));
-	ptr->mlx_ptr = mlx_init();
-	ptr->win_ptr = mlx_new_window(ptr->mlx_ptr, WIDTH,
+	ptr->mlx = mlx_init();
+	ptr->win = mlx_new_window(ptr->mlx, WIDTH,
 	HEIGHT, ft_strjoin("FDF -", av));
-	ptr->img.img_ptr = mlx_new_image(ptr->mlx_ptr, WIDTH, HEIGHT);
+	ptr->img.img_ptr = mlx_new_image(ptr->mlx, WIDTH, HEIGHT);
 	ptr->img.img_data = (int *)mlx_get_data_addr(ptr->img.img_ptr,
 	&ptr->img.bpp, &ptr->img.sl, &ptr->img.end);
 	ptr->argv = av;
 	ft_parce_file(ptr, pts);
-	mlx_put_image_to_window(ptr->mlx_ptr, ptr->win_ptr, ptr->img.img_ptr, 0, 0);
-	mlx_destroy_image(ptr->mlx_ptr, ptr->img.img_data);
-	mlx_hook(ptr->win_ptr, 2, (1L << 0), pressed_key, ptr);
-	mlx_loop(ptr->mlx_ptr);
+	mlx_put_image_to_window(ptr->mlx, ptr->win, ptr->img.img_ptr, 0, 0);
+	mlx_string_put(ptr->mlx, ptr->win, 15, 15, WHITE , ptr->argv);
+	mlx_destroy_image(ptr->mlx, ptr->img.img_data);
+	mlx_hook(ptr->win, 2, (1L << 0), pressed_key, ptr);
+	mlx_loop(ptr->mlx);
 }
 
 int			main(int argc, char **argv)

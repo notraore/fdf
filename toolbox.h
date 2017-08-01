@@ -16,8 +16,8 @@
 # include "./libft/libft.h"
 # include "./minilibx/mlx.h"
 
-# define WIDTH 1920
-# define HEIGHT 1080
+# define WIDTH 2160
+# define HEIGHT 1440
 # define LEN 5
 # define WHITE 0xFFFFFF
 # define RED 0xFF0000
@@ -77,13 +77,13 @@ typedef struct		s_mlx
 	int				x;
 	int				y;
 	int				up;
-	int				w;
+	int				zoom;
 	int				z;
 	double			mult;
 	int				clr;
 	char			*argv;
-	void			*mlx_ptr;
-	void			*win_ptr;
+	void			*mlx;
+	void			*win;
 	int				fd;
 	t_img			img;
 }					t_mlx;

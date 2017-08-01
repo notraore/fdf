@@ -26,7 +26,7 @@ void	ft_help(void)
 	ft_putstr("\t./fdf [map] -> ");
 	ft_putendl("Map exemple can be found on Map directory\n\
 	\t\t\t**INPUT**\n\
-	-Press 'a' and 'e' to add and substract relief.\n\
+	-Press 'q' and 'e' to add and substract relief.\n\
 	-Press '+' and '-' to zoom in and out.\n\
 	-Press directional arrows to move the image.\n\
 	-Press 'esc' to exit the program.");
