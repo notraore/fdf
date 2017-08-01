@@ -23,8 +23,8 @@ void		ft_line(long x0, long y0, long x1, long y1, t_mlx *ptr)
 	line.err = (line.dx > line.dy ? line.dx : -line.dy) / 2;
 	while (1)
 	{
-		if  ((((x0 - y0) > 0 && (x0 - y0) < W) && (y0 + x0) > 0 && (y0 + x0)  / 2 < H))
-			ptr->img.img_data[(x0 - y0) + (y0 + x0) / 2 * W] = ptr->clr;
+		if ((((x0 - y0) > 0 && (x0 - y0) < W) && (y0 + x0) > 0 && (y0 + x0) / 2 < H))
+			ptr->img.dta[(x0 - y0) + (y0 + x0) / 2 * W] = ptr->clr;
 		if (x0 == x1 && y0 == y1)
 			break ;
 		line.e2 = line.err;
@@ -52,9 +52,9 @@ void		ft_line2(long x0, long y0, long x1, long y1, t_mlx *ptr)
 	line.err = (line.dx > line.dy ? line.dx : -line.dy) / 2;
 	while (1)
 	{
-		if  ((((x0 - y0) > 0 && (x0 - y0) < W) && (y0 + x0 - ptr->y) > 0 &&
+		if ((((x0 - y0) > 0 && (x0 - y0) < W) && (y0 + x0 - ptr->y) > 0 &&
 		(y0 + x0 - ptr->y) / 2 < H))
-			ptr->img.img_data[(x0 - y0) + (y0 + x0 - ptr->y) / 2 * W] = ptr->clr;
+			ptr->img.dta[(x0 - y0) + (y0 + x0 - ptr->y) / 2 * W] = ptr->clr;
 		if (x0 == x1 && y0 == y1)
 			break ;
 		line.e2 = line.err;

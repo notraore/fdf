@@ -15,7 +15,7 @@
 void	clear_and_reput(t_mlx *tl, t_pts pts)
 {
 	tl->img.img_ptr = mlx_new_image(tl->mlx, W, H);
-	tl->img.img_data = (int *)mlx_get_data_addr(tl->img.img_ptr,
+	tl->img.dta = (int *)mlx_get_data_addr(tl->img.img_ptr,
 	&tl->img.bpp, &tl->img.sl, &tl->img.end);
 	ft_fill_tab(tl->stock, tl, pts, tl->taille);
 	mlx_put_image_to_window(tl->mlx, tl->win, tl->img.img_ptr, 0, 0);
@@ -43,9 +43,9 @@ int		pressed_key(int keycode, t_mlx *tool)
 	if (keycode == 13)
 		tool->z -= 5;
 	if (keycode == 12)
-		tool->mult += 0.17;
+		tool->mlt += 0.17;
 	if (keycode == 14)
-		tool->mult -= 0.17;
+		tool->mlt -= 0.17;
 	clear_and_reput(tool, pts);
 	return (0);
 }

@@ -21,23 +21,23 @@ void		ft_norme(int **sck, t_pts pts, t_mlx *ptr)
 	if (pts.j >= 1 && sck[pts.j - 1][pts.i] != 0)
 	{
 		ptr->y = (sck[pts.j][pts.i] == 0) ? ((sck[pts.j - 1][pts.i])
-		* ptr->mult * 2) / 2 : ((sck[pts.j - 1][pts.i]) * ptr->mult * 2);
+		* ptr->mlt * 2) / 2 : ((sck[pts.j - 1][pts.i]) * ptr->mlt * 2);
 		if (sck[pts.j][pts.i] == 0 && (ptr->clr = BLUE))
-			ft_line((pts.x + ptr->up) + ((sck[pts.j][pts.i]) * ptr->mult),
-			(pts.y + ptr->z) + ((sck[pts.j][pts.i]) * ptr->mult),
+			ft_line((pts.x + ptr->up) + ((sck[pts.j][pts.i]) * ptr->mlt),
+			(pts.y + ptr->z) + ((sck[pts.j][pts.i]) * ptr->mlt),
 			(pts.x + ptr->up) - ptr->y, (pts.y + ptr->z) - (LEN + ptr->zoom)
-			- (sck[pts.j - 1][pts.i]) * ptr->mult, ptr);
+			- (sck[pts.j - 1][pts.i]) * ptr->mlt, ptr);
 		if (sck[pts.j][pts.i] != 0)
 			ft_line2((pts.x + ptr->up), (pts.y + ptr->z) - (LEN + ptr->zoom),
 			(pts.x + ptr->up) + (sck[pts.j - 1][pts.i] -
-			(sck[pts.j][pts.i])) * ptr->mult,
+			(sck[pts.j][pts.i])) * ptr->mlt,
 			(pts.y + ptr->z) + (sck[pts.j - 1][pts.i] -
-			(sck[pts.j][pts.i])) * ptr->mult, ptr);
+			(sck[pts.j][pts.i])) * ptr->mlt, ptr);
 	}
 	else if (pts.j > 0 && ((sck[pts.j][pts.i] == 0 &&
 	(ptr->clr = RED)) || sck[pts.j][pts.i] != 0))
-		ft_line((ptr->up + pts.x) - ((sck[pts.j][pts.i]) * ptr->mult),
-		(pts.y + ptr->z) - ((sck[pts.j][pts.i]) * ptr->mult), (pts.x + ptr->up),
+		ft_line((ptr->up + pts.x) - ((sck[pts.j][pts.i]) * ptr->mlt),
+		(pts.y + ptr->z) - ((sck[pts.j][pts.i]) * ptr->mlt), (pts.x + ptr->up),
 		(pts.y + ptr->z) - (LEN + ptr->zoom), ptr);
 }
 
@@ -61,13 +61,13 @@ void		ft_fill_tab(int **sck, t_mlx *ptr, t_pts pts, int *taille)
 		while (pts.i < taille[pts.j])
 		{
 			pts.next_x = (pts.x + (LEN + ptr->zoom)) -
-			((sck[pts.j][pts.i + 1]) * ptr->mult);
-			pts.next_y = pts.y - ((sck[pts.j][pts.i + 1]) * ptr->mult);
+			((sck[pts.j][pts.i + 1]) * ptr->mlt);
+			pts.next_y = pts.y - ((sck[pts.j][pts.i + 1]) * ptr->mlt);
 			ptr->clr = (sck[pts.j][pts.i] == 0 && (pts.next_x ==
 			pts.x + (LEN + ptr->zoom))) ? RED : BLUE;
 			if (pts.i != taille[pts.j] - 1)
-				ft_line((pts.x + ptr->up) - ((sck[pts.j][pts.i]) * ptr->mult),
-				(pts.y + ptr->z) - ((sck[pts.j][pts.i]) * ptr->mult),
+				ft_line((pts.x + ptr->up) - ((sck[pts.j][pts.i]) * ptr->mlt),
+				(pts.y + ptr->z) - ((sck[pts.j][pts.i]) * ptr->mlt),
 				pts.next_x + ptr->up, (ptr->z + pts.next_y), ptr);
 			ft_norme(sck, pts, ptr);
 			pts.x += (LEN + ptr->zoom);
@@ -138,13 +138,13 @@ void		ft_create_win(char *av, t_mlx *ptr)
 	ptr->mlx = mlx_init();
 	ptr->win = mlx_new_window(ptr->mlx, W, H, av);
 	ptr->img.img_ptr = mlx_new_image(ptr->mlx, W, H);
-	ptr->img.img_data = (int *)mlx_get_data_addr(ptr->img.img_ptr,
+	ptr->img.dta = (int *)mlx_get_data_addr(ptr->img.img_ptr,
 	&ptr->img.bpp, &ptr->img.sl, &ptr->img.end);
 	ptr->argv = av;
 	ft_parce_file(ptr, pts);
 	mlx_put_image_to_window(ptr->mlx, ptr->win, ptr->img.img_ptr, 0, 0);
-	mlx_string_put(ptr->mlx, ptr->win, 15, 15, WHITE , ptr->argv);
-	mlx_destroy_image(ptr->mlx, ptr->img.img_data);
+	mlx_string_put(ptr->mlx, ptr->win, 15, 15, WHITE, ptr->argv);
+	mlx_destroy_image(ptr->mlx, ptr->img.dta);
 	mlx_hook(ptr->win, 2, (1L << 0), pressed_key, ptr);
 	mlx_loop(ptr->mlx);
 }

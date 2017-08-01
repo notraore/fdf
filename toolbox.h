@@ -61,7 +61,7 @@ typedef struct		s_img
 	int				end;
 
 	void			*img_ptr;
-	int				*img_data;
+	int				*dta;
 }					t_img;
 
 typedef struct		s_mlx
@@ -73,7 +73,7 @@ typedef struct		s_mlx
 	int				up;
 	int				zoom;
 	int				z;
-	double			mult;
+	double			mlt;
 	int				clr;
 	char			*argv;
 	void			*mlx;
