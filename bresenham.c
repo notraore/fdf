@@ -12,61 +12,66 @@
 
 #include "toolbox.h"
 
-void		ft_line(long x0, long y0, long x1, long y1, t_mlx *ptr)
+void		line_init(t_line *line, t_pts *pts)
+{
+	line->dx = labs(pts->x1 - pts->x0);
+	line->sx = pts->x0 < pts->x1 ? 1 : -1;
+	line->dy = labs(pts->y1 - pts->y0);
+	line->sy = pts->y0 < pts->y1 ? 1 : -1;
+	line->err = (line->dx > line->dy ? line->dx : -line->dy) / 2;
+}
+
+void		ft_line(t_pts *pts, t_mlx *ptr)
 {
 	t_line line;
 
-	line.dx = labs(x1 - x0);
-	line.sx = x0 < x1 ? 1 : -1;
-	line.dy = labs(y1 - y0);
-	line.sy = y0 < y1 ? 1 : -1;
-	line.err = (line.dx > line.dy ? line.dx : -line.dy) / 2;
+	line_init(&line, pts);
 	while (1)
 	{
-		if ((((x0 - y0) > 0 && (x0 - y0) < W) && (y0 + x0) > 0 && (y0 + x0) / 2 < H))
-			ptr->img.dta[(x0 - y0) + (y0 + x0) / 2 * W] = ptr->clr;
-		if (x0 == x1 && y0 == y1)
+		if ((((pts->x0 - pts->y0) > 0 && (pts->x0 - pts->y0) < W) &&
+		(pts->y0 + pts->x0) > 0 && (pts->y0 + pts->x0) / 2 < H))
+			ptr->img.dta[(pts->x0 - pts->y0) +
+			(pts->y0 + pts->x0) / 2 * W] = ptr->clr;
+		if (pts->x0 == pts->x1 && pts->y0 == pts->y1)
 			break ;
 		line.e2 = line.err;
 		if (line.e2 > -line.dx)
 		{
 			line.err -= line.dy;
-			x0 += line.sx;
+			pts->x0 += line.sx;
 		}
 		if (line.e2 < line.dy)
 		{
 			line.err += line.dx;
-			y0 += line.sy;
+			pts->y0 += line.sy;
 		}
 	}
 }
 
-void		ft_line2(long x0, long y0, long x1, long y1, t_mlx *ptr)
+void		ft_line2(t_pts *pts, t_mlx *ptr)
 {
 	t_line line;
 
-	line.dx = labs(x1 - x0);
-	line.sx = x0 < x1 ? 1 : -1;
-	line.dy = labs(y1 - y0);
-	line.sy = y0 < y1 ? 1 : -1;
-	line.err = (line.dx > line.dy ? line.dx : -line.dy) / 2;
+	line_init(&line, pts);
 	while (1)
 	{
-		if ((((x0 - y0) > 0 && (x0 - y0) < W) && (y0 + x0 - ptr->y) > 0 &&
-		(y0 + x0 - ptr->y) / 2 < H))
-			ptr->img.dta[(x0 - y0) + (y0 + x0 - ptr->y) / 2 * W] = ptr->clr;
-		if (x0 == x1 && y0 == y1)
+		if ((((pts->x0 - pts->y0) > 0 && (pts->x0 - pts->y0) < W) &&
+		(pts->y0 + pts->x0 - ptr->y) > 0 &&
+		(pts->y0 + pts->x0 - ptr->y) / 2 < H))
+			ptr->img.dta[(pts->x0 - pts->y0) + (pts->y0 + pts->x0 - ptr->y)
+			/ 2 * W] = ptr->clr;
+		if (pts->x0 == pts->x1 && pts->y0 == pts->y1)
 			break ;
 		line.e2 = line.err;
 		if (line.e2 > -line.dx)
 		{
 			line.err -= line.dy;
-			x0 += line.sx;
+			pts->x0 += line.sx;
 		}
 		if (line.e2 < line.dy)
 		{
 			line.err += line.dx;
-			y0 += line.sy;
+			pts->y0 += line.sy;
 		}
 	}
 }

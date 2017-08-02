@@ -22,23 +22,23 @@ void		ft_norme(int **sck, t_pts *pts, t_mlx *ptr)
 	{
 		ptr->y = (sck[pts->j][pts->i] == 0) ? ((sck[pts->j - 1][pts->i])
 		* ptr->mlt * 2) / 2 : ((sck[pts->j - 1][pts->i]) * ptr->mlt * 2);
-		if (sck[pts->j][pts->i] == 0 && (ptr->clr = BLUE))
-			ft_line((pts->x + ptr->up) + ((sck[pts->j][pts->i]) * ptr->mlt),
-			(pts->y + ptr->z) + ((sck[pts->j][pts->i]) * ptr->mlt),
-			(pts->x + ptr->up) - ptr->y, (pts->y + ptr->z) - (LEN + ptr->zoom)
-			- (sck[pts->j - 1][pts->i]) * ptr->mlt, ptr);
+		if (sck[pts->j][pts->i] == 0 && (ptr->clr = GREEN))
+		{
+			ft_solving(sck, pts, ptr);
+			ft_line(pts, ptr);
+		}
 		if (sck[pts->j][pts->i] != 0)
-			ft_line2((pts->x + ptr->up), (pts->y + ptr->z) - (LEN + ptr->zoom),
-			(pts->x + ptr->up) + (sck[pts->j - 1][pts->i] -
-			(sck[pts->j][pts->i])) * ptr->mlt,
-			(pts->y + ptr->z) + (sck[pts->j - 1][pts->i] -
-			(sck[pts->j][pts->i])) * ptr->mlt, ptr);
+		{
+			ft_solving2(sck, pts, ptr);
+			ft_line2(pts, ptr);
+		}
 	}
 	else if (pts->j > 0 && ((sck[pts->j][pts->i] == 0 &&
 	(ptr->clr = RED)) || sck[pts->j][pts->i] != 0))
-		ft_line((ptr->up + pts->x) - ((sck[pts->j][pts->i]) * ptr->mlt),
-		(pts->y + ptr->z) - ((sck[pts->j][pts->i]) * ptr->mlt),
-		(pts->x + ptr->up), (pts->y + ptr->z) - (LEN + ptr->zoom), ptr);
+	{
+		ft_solving3(sck, pts, ptr);
+		ft_line(pts, ptr);
+	}
 }
 
 /*
@@ -62,11 +62,13 @@ void		ft_fill_tab(int **sck, t_mlx *ptr, t_pts *pts, int *taille)
 			pts->next_x = (pts->x + (LEN + ptr->zoom)) -
 			((sck[pts->j][pts->i + 1]) * ptr->mlt);
 			pts->next_y = pts->y - ((sck[pts->j][pts->i + 1]) * ptr->mlt);
-			ptr->clr = (sck[pts->j][pts->i] == 0 && sck[pts->j][pts->i + 1] == 0) ? RED : BLUE;
-   		if (pts->i != taille[pts->j] - 1)
-			ft_line((pts->x + ptr->up) - ((sck[pts->j][pts->i]) * ptr->mlt),
-			(pts->y + ptr->z) - ((sck[pts->j][pts->i]) * ptr->mlt),
-			pts->next_x + ptr->up, (ptr->z + pts->next_y), ptr);
+			ptr->clr = (sck[pts->j][pts->i] == 0 &&
+			sck[pts->j][pts->i + 1] == 0) ? RED : GREEN;
+			if (pts->i != taille[pts->j] - 1)
+			{
+				ft_solving4(sck, pts, ptr);
+				ft_line(pts, ptr);
+			}
 			ft_norme(sck, pts, ptr);
 			pts->x += (LEN + ptr->zoom);
 			pts->i += 1;

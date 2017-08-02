@@ -40,6 +40,10 @@ typedef struct		s_pts
 	int				y;
 	int				i;
 	int				j;
+	long			x0;
+	long			y0;
+	long			x1;
+	long			y1;
 	int				next_x;
 	int				next_y;
 }					t_pts;
@@ -100,8 +104,16 @@ void				ft_help();
 /*
 **bresenham
 */
-void				ft_line(long x0, long y0, long x1, long y1, t_mlx *ptr);
-void				ft_line2(long x0, long y0, long x1, long y1, t_mlx *ptr);
+void				ft_line(t_pts *pts, t_mlx *ptr);
+void				ft_line2(t_pts *pts, t_mlx *ptr);
 void				ft_create_win(char *argv, t_mlx *ptr);
+/*
+**ft_math.h
+*/
+void				ft_solving(int **sck, t_pts *pts, t_mlx *ptr);
+void				ft_solving2(int **sck, t_pts *pts, t_mlx *ptr);
+void				ft_solving3(int **sck, t_pts *pts, t_mlx *ptr);
+void				ft_solving4(int **sck, t_pts *pts, t_mlx *ptr);
+
 
 #endif
