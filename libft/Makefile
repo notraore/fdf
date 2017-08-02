@@ -23,7 +23,7 @@ ft_isprint.c ft_memcpy.c ft_putendl_fd.c ft_strclr.c ft_striteri.c ft_strncmp.c 
 ft_memdel.c ft_putnbr.c ft_strcmp.c ft_strjoin.c ft_strncpy.c ft_strtrim.c ft_is_prime.c\
 ft_find_next_prime.c ft_strcapitalize.c ft_isdigit.c ft_isalpha.c ft_strstr.c ft_toupper.c\
 ft_tolower.c ft_strlowcase.c ft_isspace.c ft_split.c ft_strcount.c ft_lstnew.c ft_lstadd.c\
-get_next_line.c ft_lstiter.c ft_lstdel.c ft_lstdelone.c ft_lstmap.c ft_kill.c
+get_next_line.c ft_lstiter.c ft_lstdel.c ft_lstdelone.c ft_lstmap.c ft_kill.c free_tab.c
 HEADER_PATH=./includes/
 FULL_PATH=$(SRC)
 OBJ=ft_itoa.o ft_memmove.o ft_putnbr_fd.o ft_strcpy.o ft_strlcat.o ft_strnequ.o ft_atoi.o\
@@ -35,7 +35,7 @@ ft_isprint.o ft_memcpy.o ft_putendl_fd.o ft_strclr.o ft_striteri.o ft_strncmp.o 
 ft_memdel.o ft_putnbr.o ft_strcmp.o ft_strjoin.o ft_strncpy.o ft_strtrim.o ft_is_prime.o\
 ft_find_next_prime.o ft_strcapitalize.o ft_isdigit.o ft_isalpha.o ft_strstr.o ft_toupper.o\
 ft_tolower.o ft_strlowcase.o ft_isspace.o ft_split.o ft_strcount.o ft_lstnew.o ft_lstadd.o\
-get_next_line.o ft_lstiter.o ft_lstdel.o ft_lstdelone.o ft_lstmap.o ft_kill.o
+get_next_line.o ft_lstiter.o ft_lstdel.o ft_lstdelone.o ft_lstmap.o ft_kill.o free_tab.o
 HEADER_PATH=./includes/
 all: $(NAME)
 $(NAME): $(OBJ)

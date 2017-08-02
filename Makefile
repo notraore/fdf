@@ -12,8 +12,8 @@
 
 NAME=fdf
 CC=gcc
-SRC=main.c errors.c key_input.c bresenham.c
-OBJ=main.o errors.o key_input.o bresenham.o
+SRC=main.c errors.c key_input.c bresenham.c ft_fill_tab.c
+OBJ=main.o errors.o key_input.o bresenham.o ft_fill_tab.o
 FLAGS=-Wall -Wextra -Werror
 LIB=./libft/libft.a
 MLX=-L ./miniLibx -l mlx -framework OpenGL -framework AppKit

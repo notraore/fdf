@@ -12,7 +12,7 @@
 
 #include "toolbox.h"
 
-void	clear_and_reput(t_mlx *tl, t_pts pts)
+void	clear_and_reput(t_mlx *tl, t_pts *pts)
 {
 	tl->img.img_ptr = mlx_new_image(tl->mlx, W, H);
 	tl->img.dta = (int *)mlx_get_data_addr(tl->img.img_ptr,
@@ -22,14 +22,8 @@ void	clear_and_reput(t_mlx *tl, t_pts pts)
 	mlx_string_put(tl->mlx, tl->win, 15, 15, WHITE, "W,A,S,D to move");
 }
 
-int		pressed_key(int keycode, t_mlx *tool)
+void	ft_key_code(int keycode, t_mlx *tool, t_pts *pts)
 {
-	t_pts pts;
-
-	ft_bzero(&pts, sizeof(t_pts));
-	if (keycode == 53)
-		exit(EXIT_SUCCESS);
-	bzero(&tool->img, sizeof(t_img));
 	if (keycode == 2)
 		tool->up += 5;
 	if (keycode == 0)
@@ -47,5 +41,18 @@ int		pressed_key(int keycode, t_mlx *tool)
 	if (keycode == 14)
 		tool->mlt -= 0.17;
 	clear_and_reput(tool, pts);
+}
+
+int		pressed_key(int keycode, t_mlx *tool)
+{
+	t_pts pts;
+
+	if (keycode == 53)
+		exit(EXIT_SUCCESS);
+	ft_bzero(&pts, sizeof(t_pts));
+	ft_bzero(&tool->img, sizeof(t_img));
+	if (keycode == 2 || keycode == 0 || keycode == 69 || keycode == 78 ||
+	keycode == 1 || keycode == 13 || keycode == 12 || keycode == 14)
+		ft_key_code(keycode, tool, &pts);
 	return (0);
 }

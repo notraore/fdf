@@ -36,6 +36,7 @@ int					ft_strcount(const char *str, char c);
 int					ft_isalnum(int c);
 int					ft_isascii(int c);
 int					ft_isprint(int c);
+void				free_tab(char **str);
 void				*ft_memalloc(size_t size);
 void				*ft_memccpy(void *s1, const void *s2, int c, size_t n);
 void				*ft_memchr(const void *s, int c, size_t n);

@@ -84,8 +84,8 @@ typedef struct		s_mlx
 /*
 ** main.c
 */
-void				ft_parce_file(t_mlx *ptr, t_pts pts);
-void				ft_fill_tab(int **sck, t_mlx *ptr, t_pts pts, int *taille);
+void				ft_parce_file(t_mlx *ptr, t_pts *pts);
+void				ft_fill_tab(int **sck, t_mlx *ptr, t_pts *pts, int *taille);
 
 /*
 **PRESSED_KEY
