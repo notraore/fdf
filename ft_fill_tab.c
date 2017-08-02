@@ -28,8 +28,8 @@ void		ft_norme(int **sck, t_pts *pts, t_mlx *ptr)
 			(pts->x + ptr->up) - ptr->y, (pts->y + ptr->z) - (LEN + ptr->zoom)
 			- (sck[pts->j - 1][pts->i]) * ptr->mlt, ptr);
 		if (sck[pts->j][pts->i] != 0)
-			ft_line(((pts->x / 2) + ptr->up), (pts->y + ptr->z) - (LEN + ptr->zoom),
-			((pts->x / 2) + ptr->up) + (sck[pts->j - 1][pts->i] -
+			ft_line2((pts->x + ptr->up), (pts->y + ptr->z) - (LEN + ptr->zoom),
+			(pts->x + ptr->up) + (sck[pts->j - 1][pts->i] -
 			(sck[pts->j][pts->i])) * ptr->mlt,
 			(pts->y + ptr->z) + (sck[pts->j - 1][pts->i] -
 			(sck[pts->j][pts->i])) * ptr->mlt, ptr);
@@ -62,12 +62,11 @@ void		ft_fill_tab(int **sck, t_mlx *ptr, t_pts *pts, int *taille)
 			pts->next_x = (pts->x + (LEN + ptr->zoom)) -
 			((sck[pts->j][pts->i + 1]) * ptr->mlt);
 			pts->next_y = pts->y - ((sck[pts->j][pts->i + 1]) * ptr->mlt);
-			ptr->clr = (sck[pts->j][pts->i] == 0 && (pts->next_x ==
-			pts->x + (LEN + ptr->zoom))) ? RED : BLUE;
-			if (pts->i != taille[pts->j] - 1)
-				ft_line((pts->x + ptr->up) - ((sck[pts->j][pts->i]) * ptr->mlt),
-				(pts->y + ptr->z) - ((sck[pts->j][pts->i]) * ptr->mlt),
-				pts->next_x + ptr->up, (ptr->z + pts->next_y), ptr);
+			ptr->clr = (sck[pts->j][pts->i] == 0 && sck[pts->j][pts->i + 1] == 0) ? RED : BLUE;
+   		if (pts->i != taille[pts->j] - 1)
+			ft_line((pts->x + ptr->up) - ((sck[pts->j][pts->i]) * ptr->mlt),
+			(pts->y + ptr->z) - ((sck[pts->j][pts->i]) * ptr->mlt),
+			pts->next_x + ptr->up, (ptr->z + pts->next_y), ptr);
 			ft_norme(sck, pts, ptr);
 			pts->x += (LEN + ptr->zoom);
 			pts->i += 1;

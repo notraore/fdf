@@ -53,7 +53,7 @@ void		ft_parce_file(t_mlx *ptr, t_pts *pts)
 		while (pce.tmp[pce.i])
 			pce.i += 1;
 		ptr->stock[pce.j] = ft_memalloc(sizeof(int) * pce.i + 1);
-		pce.i = 0;
+		pce.i = -1;
 		while (pce.tmp[pce.i += 1])
 			ptr->stock[pce.j][pce.i] = ft_atoi(pce.tmp[pce.i]);
 		ptr->taille[pce.j] = pce.i;
