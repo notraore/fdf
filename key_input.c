@@ -12,8 +12,7 @@
 
 #include "toolbox.h"
 
-
-int		clear_and_reput(t_mlx *tl, t_pts *pts)
+void	clear_and_reput(t_mlx *tl, t_pts *pts)
 {
 	tl->img.img_ptr = mlx_new_image(tl->mlx, W, H);
 	tl->img.dta = (int *)mlx_get_data_addr(tl->img.img_ptr,
@@ -21,7 +20,6 @@ int		clear_and_reput(t_mlx *tl, t_pts *pts)
 	ft_fill_tab(tl->stock, tl, pts, tl->taille);
 	mlx_put_image_to_window(tl->mlx, tl->win, tl->img.img_ptr, 0, 0);
 	mlx_string_put(tl->mlx, tl->win, 15, 15, WHITE, tl->argv);
-	return (1);
 }
 
 void	tool_clear(t_mlx *ptr)

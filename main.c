@@ -81,7 +81,6 @@ void		ft_create_win(char *av, t_mlx *ptr)
 	mlx_string_put(ptr->mlx, ptr->win, 15, 15, WHITE, ptr->argv);
 	mlx_destroy_image(ptr->mlx, ptr->img.dta);
 	mlx_hook(ptr->win, 2, (1L << 0), &pressed_key, ptr);
-	// mlx_expose_hook(ptr->win, &clear_and_reput, ptr);
 	mlx_loop(ptr->mlx);
 }
 
