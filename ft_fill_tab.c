@@ -18,8 +18,9 @@
 
 void		ft_norme(int **sck, t_pts *pts, t_mlx *ptr)
 {
-	if (pts->j >= 1 && sck[pts->j - 1][pts->i] != 0)
+	if (pts->j >= 1 && sck[pts->j - 1][pts->i] != 0 &&  pts->i < ptr->taille[pts->j - 1])
 	{
+
 		ptr->y = (sck[pts->j][pts->i] == 0) ? ((sck[pts->j - 1][pts->i])
 		* ptr->mlt * 2) / 2 : ((sck[pts->j - 1][pts->i]) * ptr->mlt * 2);
 		if (sck[pts->j][pts->i] == 0 && (ptr->clr = GREEN))
@@ -34,7 +35,7 @@ void		ft_norme(int **sck, t_pts *pts, t_mlx *ptr)
 		}
 	}
 	else if (pts->j > 0 && ((sck[pts->j][pts->i] == 0 &&
-	(ptr->clr = RED)) || sck[pts->j][pts->i] != 0))
+	(ptr->clr = RED)) || sck[pts->j][pts->i] != 0) && (pts->j >= 1 && pts->i < ptr->taille[pts->j - 1]))
 	{
 		ft_solving3(sck, pts, ptr);
 		ft_line(pts, ptr);

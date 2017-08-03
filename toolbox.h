@@ -32,6 +32,7 @@ typedef struct		s_pce
 	char			**tmp;
 	int				i;
 	int				j;
+	int				check;
 }					t_pce;
 
 typedef struct		s_pts
@@ -114,6 +115,5 @@ void				ft_solving(int **sck, t_pts *pts, t_mlx *ptr);
 void				ft_solving2(int **sck, t_pts *pts, t_mlx *ptr);
 void				ft_solving3(int **sck, t_pts *pts, t_mlx *ptr);
 void				ft_solving4(int **sck, t_pts *pts, t_mlx *ptr);
-
 
 #endif

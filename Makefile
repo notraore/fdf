@@ -23,6 +23,9 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	@ echo "\033[92m\t\t\t---> ✓ libft created. ✓ <---\033[0m"
 	@ make -C ./libft
+	@ echo "\033[1;33mChecking norminette...\033[2;00m"
+	@ norminette $(SRC) toolbox.h
+	@ echo "\033[92m\t\t\t---> ✓ Norminette : OK. ✓ <---\033[1;34m"
 	@ echo "\033[92m\t---> ✓ fdf program has been successfully created. ✓ <---\033[0m"
 	@ $(CC) $(FLAGS) $(OBJ) -o $(NAME) $(MLX) $(LIB)
 $(OBJ): $(SRC)
