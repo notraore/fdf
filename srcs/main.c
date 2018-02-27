@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: notraore <notraore@student.42.fr>          +#+  +:+       +#+        */
+/*   By: notraore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 14:37:22 by notraore          #+#    #+#             */
-/*   Updated: 2018/02/25 22:58:15 by notraore         ###   ########.fr       */
+/*   Updated: 2017/08/03 19:33:15 by notraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../toolbox.h"
+#include "../includes/toolbox.h"
 
 int			open_close_fd(int fd, char *argv, t_pce *pce)
 {
@@ -78,7 +78,8 @@ void		ft_create_win(char *av, t_mlx *ptr)
 	ptr->argv = av;
 	ft_parce_file(ptr, &pts);
 	mlx_put_image_to_window(ptr->mlx, ptr->win, ptr->img.img_ptr, 0, 0);
-	mlx_string_put(ptr->mlx, ptr->win, 15, 15, WHITE, ptr->argv);
+	mlx_string_put(ptr->mlx, ptr->win, 15, 15, WHITE,
+	"Welcome to FDF project!");
 	mlx_destroy_image(ptr->mlx, ptr->img.dta);
 	mlx_hook(ptr->win, 2, (1L << 0), &pressed_key, ptr);
 	mlx_loop(ptr->mlx);

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: notraore <notraore@student.42.fr>          +#+  +:+       +#+        */
+/*   By: notraore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/30 12:24:07 by notraore          #+#    #+#             */
-/*   Updated: 2018/02/25 22:58:13 by notraore         ###   ########.fr       */
+/*   Updated: 2017/06/14 15:48:17 by notraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../toolbox.h"
+#include "../includes/toolbox.h"
 
 void	ft_print_err(int argc)
 {
@@ -28,7 +28,8 @@ void	ft_help(void)
 	\t\t\t**INPUT**\n\
 	-Press 'q' and 'e' to add and substract relief.\n\
 	-Press '+' and '-' to zoom in and out.\n\
-	-Press directional arrows to move the image.\n\
-	-Press 'esc' to exit the program.");
+	-Press 'w' 'a' 's' 'd' arrows to move the image.\n\
+	-Press 'esc' to exit the program.\n\
+	-Press 'c' to reset all the changes.");
 	exit(EXIT_SUCCESS);
 }

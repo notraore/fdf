@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   toolbox.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: notraore <notraore@student.42.fr>          +#+  +:+       +#+        */
+/*   By: notraore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 20:42:23 by notraore          #+#    #+#             */
-/*   Updated: 2018/02/25 22:58:09 by notraore         ###   ########.fr       */
+/*   Updated: 2017/07/08 20:42:26 by notraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef __TOOLBOX_H
 # define __TOOLBOX_H
 
-# include "./libft/libft.h"
-# include "./minilibx/mlx.h"
+# include "../libft/libft.h"
+# include "../minilibx/mlx.h"
 
 # define W 2160
 # define H 1440

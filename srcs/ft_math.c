@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_math.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: notraore <notraore@student.42.fr>          +#+  +:+       +#+        */
+/*   By: notraore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/02 20:18:37 by notraore          #+#    #+#             */
-/*   Updated: 2018/02/25 22:58:14 by notraore         ###   ########.fr       */
+/*   Created: 2017/08/03 19:08:45 by notraore          #+#    #+#             */
+/*   Updated: 2017/08/03 19:08:53 by notraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../toolbox.h"
+#include "../includes/toolbox.h"
 
 void	ft_solving(int **sck, t_pts *pts, t_mlx *ptr)
 {

@@ -3,21 +3,20 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: notraore <notraore@student.42.fr>          +#+  +:+       +#+         #
+#    By: notraore <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/22 16:56:22 by lramirez          #+#    #+#              #
-#    Updated: 2018/02/25 22:58:12 by notraore         ###   ########.fr        #
+#    Updated: 2018/02/27 13:44:35 by notraore         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=fdf
 CC=gcc
-SRC=srcs/main.c srcs/errors.c srcs/key_input.c srcs/bresenham.c \
-srcs/ft_fill_tab.c srcs/ft_math.c
+SRC=./srcs/main.c ./srcs/errors.c ./srcs/key_input.c ./srcs/bresenham.c ./srcs/ft_fill_tab.c ./srcs/ft_math.c
 OBJ=main.o errors.o key_input.o bresenham.o ft_fill_tab.o ft_math.o
 FLAGS=-Wall -Wextra -Werror
 LIB=./libft/libft.a
-MLX=-L ./miniLibx -framework OpenGL -framework AppKit
+MLX=-L ./miniLibx -l mlx -framework OpenGL -framework AppKit
 
 all: $(NAME)
 

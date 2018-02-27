@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   bresenham.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: notraore <notraore@student.42.fr>          +#+  +:+       +#+        */
+/*   By: notraore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/30 12:24:07 by notraore          #+#    #+#             */
-/*   Updated: 2018/02/25 22:58:12 by notraore         ###   ########.fr       */
+/*   Updated: 2017/06/14 15:48:17 by notraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../toolbox.h"
+#include "../includes/toolbox.h"
 
 void		line_init(t_line *line, t_pts *pts)
 {
