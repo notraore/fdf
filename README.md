@@ -8,6 +8,5 @@ This is a school projet called Fdf
 
 ![screen shot 2018-02-27 at 1 43 22 pm](https://user-images.githubusercontent.com/27351943/36729627-21335ee6-1bc5-11e8-9f07-5d91c9cb62d0.png)
 
-
-Note :
 ![screen shot 2018-02-27 at 1 51 14 pm](https://user-images.githubusercontent.com/27351943/36729687-4eefe28c-1bc5-11e8-94bb-f2baa4520fa6.png)
+Note : 
