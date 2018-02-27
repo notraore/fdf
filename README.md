@@ -2,6 +2,10 @@
 
 This is a school projet called Fdf
 
+Make
+
+./fdf maps/[map]
+
 ![screen shot 2018-02-27 at 1 44 15 pm](https://user-images.githubusercontent.com/27351943/36729610-126a4316-1bc5-11e8-9796-d6cb704533d5.png)
 
 ![screen shot 2018-02-27 at 1 42 42 pm](https://user-images.githubusercontent.com/27351943/36729626-211fd722-1bc5-11e8-81ac-c9f60179ad59.png)
