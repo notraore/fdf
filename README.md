@@ -13,7 +13,7 @@ This is a school projet called Fdf
   </ul>
 
 Usage : `make`<br />
-`./fdf map/[yout map]`
+`./fdf map/[your map]`
 
 ![screen shot 2018-02-27 at 1 44 15 pm](https://user-images.githubusercontent.com/27351943/36729610-126a4316-1bc5-11e8-9796-d6cb704533d5.png)
 
